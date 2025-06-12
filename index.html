@@ -14,12 +14,9 @@
             display: flex;
               align-items: center;
               justify-content: center;
-              
-            
         }
         h1{ 
             padding-left: -10px;
-
         }
 
         .painel{
@@ -35,14 +32,10 @@
         }
 
         #logo{
-            
-            
             height: 80px;
             width: 80px;
             border-radius: 60px;
             margin-right: 5px;
-            
-            
         }
 
         #sim{
@@ -54,9 +47,11 @@
             color: white;
             margin-left: -50px;
         }
+
         #gif {
-        margin-left: 150px;  /* Ajuste o valor para mover mais ou menos para a direita */
+            margin-left: 150px;  /* Ajuste o valor para mover mais ou menos para a direita */
         }
+
         #nao{
             position: absolute;
             height: 40px;
@@ -68,6 +63,30 @@
             margin-left: 10px;
         }
 
+        #mensagemFinal {
+            display: none; /* Inicialmente escondido */
+            text-align: center;
+            position: fixed; /* Fixa no centro da tela */
+            top: 50%; /* Centraliza verticalmente */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%); /* Ajuste final para garantir o centro */
+            z-index: 10000; /* Garantir que a mensagem final fique à frente de tudo */
+        }
+
+        #mensagemFinal img {
+            width: 700px; /* Aumenta a largura da imagem */
+            height: auto;
+            margin-bottom: 30px; /* Maior espaço abaixo da imagem */
+            border-radius: 40px;
+        }
+
+        #mensagemFinal h3, #mensagemFinal p {
+            font-size: 36px; /* Aumenta o tamanho do texto */
+            color: #333;
+            z-index: 10001; /* Garantir que o texto esteja acima da imagem */
+            position: relative;
+            margin: 10px 0; /* Mais espaço entre o texto e a imagem */
+        }
     </style>
 
 </head>
@@ -82,17 +101,25 @@
 
         <h2> Para minha querida Geovana</h2>
 
-        <img src="imgs/snoopy.gif" alt="" id = "gif">
+        <img src="imgs/snoopy.gif" alt="" id="gif">
 
         <h2>Aceita namorar comigo? </h2>
         
-
         <a href="https://streamable.com/z3cq6f"><button id="sim" > Sim! </button></a>
-        <button onmouseover="fuja()" id="nao"> Não! </button>
+        <button onmouseover="fuja()" id="nao"> NAO </button>
+
+        <div id="mensagemFinal">
+            <h3>Quer terminar comigo é ?!</h3>
+            <img src="imgs/desconfiado.jpg" alt="Imagem" id="imagemFinal">
+            <p>Não estou entendendo!</p>
+        </div>
         
     </div>
 
     <script>
+        var contadorFuga = 0;  // Inicializa o contador
+        var limiteFugas = 5;   // Define o limite de vezes que o mouse deve passar sobre o botão
+
         function fuja(){
             var botaoNao = document.getElementById("nao")
 
@@ -108,12 +135,24 @@
             botaoNao.style.left = aleatorioX + "px";
             botaoNao.style.top = aleatorioY + "px";
 
+            // Aumenta o contador toda vez que o mouse passa sobre o botão
+            contadorFuga++;
 
+            // Quando o contador atingir o limite, chama a função para exibir a mensagem final
+            if(contadorFuga >= limiteFugas){
+                mostrarMensagemFinal();
+            }
         }
+
+        function mostrarMensagemFinal() {
+            // Esconde o botão "Não"
+            document.getElementById("nao").style.display = "none";
+
+            // Exibe a mensagem final
+            document.getElementById("mensagemFinal").style.display = "block";
+        }
+
     </script>
 
-
-
-    
 </body>
 </html>
