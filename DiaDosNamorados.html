@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia Dos Namorados</title>
+
+    <style>
+        body{
+            background-image: url('/imgs/coracao.jpg');
+        }
+        .header {
+            display: flex;
+              align-items: center;
+              justify-content: center;
+              
+            
+        }
+        h1{ 
+            padding-left: -10px;
+
+        }
+
+        .painel{
+            margin: auto;
+            background-color: white;
+            border: 2px solid #000;
+            width: 700px;
+            height: 700px;
+            border-radius: 20px;
+            text-align: center;
+            padding-top: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #logo{
+            
+            
+            height: 80px;
+            width: 80px;
+            border-radius: 60px;
+            margin-right: 5px;
+            
+            
+        }
+
+        #sim{
+            height: 40px;
+            width: 60px;
+            background-color: rgb(0, 255, 21);
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            margin-left: -50px;
+        }
+        #gif {
+        margin-left: 150px;  /* Ajuste o valor para mover mais ou menos para a direita */
+        }
+        #nao{
+            position: absolute;
+            height: 40px;
+            width: 60px;
+            background-color: rgb(71, 0, 0);
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            margin-left: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="painel">
+        
+        <div class="header">
+            <img src="imgs/logo.jpg" id="logo">
+            <h1>Feliz Dia dos Namorados</h1>
+        </div>
+
+        <h2> Para minha querida Geovana</h2>
+
+        <img src="imgs/snoopy.gif" alt="" id = "gif">
+
+        <h2>Aceita namorar comigo? </h2>
+        
+
+        <a href="https://www.youtube.com/watch?v=oRvND-r57Us"><button id="sim" > Sim! </button></a>
+        <button onmouseover="fuja()" id="nao"> Não! </button>
+        
+    </div>
+
+    <script>
+        function fuja(){
+            var botaoNao = document.getElementById("nao")
+
+            var larguraJanela = window.innerWidth;
+            var alturaJanela = window.innerHeight;
+
+            var maxX = larguraJanela - botaoNao.offsetWidth;
+            var maxY = alturaJanela - botaoNao.offsetHeight;
+
+            var aleatorioX = Math.floor(Math.random() * maxX);
+            var aleatorioY = Math.floor(Math.random() * maxY);
+
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+
+
+        }
+    </script>
+
+
+
+    
+</body>
+</html>
